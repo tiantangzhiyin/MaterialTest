@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--添加app命名空间，方便兼容Material属性-->
+<!--DrawerLayout布局有两个直接子控件，第一个是主屏幕内容，第二个是滑动菜单中显示内容-->
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--CoordinatorLayout相当于一个增强版的FrameLayout，可以监听所有子控件的事件然后自动做出合理的响应-->
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--解决覆盖问题，第一步将Toolbar嵌套到AppBarLayout中，第二部给RecyclerView指定一个布局行为-->
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--AppBarLayout接受滚动事件时，内部的子控件可以指定如何响应滚动事件-->
+            <!--使用android:theme单独指定toolbar使用深色主题-->
+            <!--使用app:popupTheme单独指定弹出菜单为淡色主题-->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_scrollFlags="scroll|enterAlways|snap"/>
+                <!--app:layout_scrollFlags指定如何响应滚动事件，scroll表示向上滚动隐藏，enterAlways表示向下滚动显示，snap表示根据距离自动选择-->
+        </android.support.design.widget.AppBarLayout>
+        <!--因为使用CoordinatorLayout布局，因此会造成RecyclerView挡住Toolbar，为了解决这个问题，需要使用AppBarLayout-->
+        <!--使用SwipeRefreshLayout实现下拉刷新功能-->
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"><!--app:layout_behavior指定布局行为-->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+        <!--FloatingActionButton悬浮按钮-->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_add"
+            app:elevation="8dp"/><!--app:elevation指定一个高度值，值越大投影范围越大，但是效果越小-->
+    </android.support.design.widget.CoordinatorLayout>
+    <!--使用NavigationView实现侧滑菜单，需要menu和headerLayout-->
+    <!--android:layout_gravity属性必须指定，left表示滑动菜单在左边，right表示右边-->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/nav_menu"
+        app:headerLayout="@layout/nav_header"/>
+
+</android.support.v4.widget.DrawerLayout>

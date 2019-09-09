@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--NavigationView的headerLayout-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:padding="10dp"
+    android:background="?attr/colorPrimary">
+    <!--CircleImageView是一个将图片圆形化的控件-->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/icon_image"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/nav_icon"
+        android:layout_centerInParent="true"/><!--layout_centerInParent居中显示-->
+    <TextView
+        android:id="@+id/mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tiantangzhiyin@gmail.com"
+        android:textColor="#FFF"
+        android:textSize="14sp"
+        android:layout_alignParentBottom="true"/><!--layout_alignParentBottom与父布局下对齐-->
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tian Tang"
+        android:textColor="#FFF"
+        android:textSize="14sp"
+        android:layout_above="@id/mail"/><!--在指定控件上方-->
+
+</RelativeLayout>

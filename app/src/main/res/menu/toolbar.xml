@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--app:showAsAction指定按钮显示位置，always总是显示，ifRoom有空间就显示在Toolbar中，never只显示在菜单中-->
+    <!--Toolbar的action按钮只显示图标，菜单按钮只显示文字-->
+    <item
+        android:id="@+id/backup"
+        android:icon="@drawable/backup"
+        android:title="Backup"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/add"
+        android:icon="@drawable/add_file"
+        android:title="Add"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/setting"
+        android:title="Setting"
+        app:showAsAction="never"/>
+</menu>
